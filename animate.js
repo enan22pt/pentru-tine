@@ -26,18 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
         { time: 56, text: "So we never saw the start" },
         { time: 63, text: "Of each other's lives" },
         { time: 69, text: "Heart to heart" },
-        { time: 76, text: "Heart to heart" },
-        { time: 82, text: "Heart to heart" },
-        { time: 89, text: "Heart to heart" },
-        { time: 95, text: "Heart to heart" },
-        { time: 101, text:"And though it seems so quick and easy"},
-        { time: 108, text:"Sentimentally assumed"},
-        { time: 114, text:"Walking parallels"},
-        { time: 120, text:"Heart to heart"},
-        { time: 126, text:"To all the days we were together"},
-        { time: 133, text:"To all the time we played a part"},
-        { time: 140, text:"In each other's lives"},
-        { time: 145, text:"Heart to heart"}
+        { time: 101, text:"And though it seems so quick and easy" },
+        { time: 108, text:"Sentimentally assumed" },
+        { time: 114, text:"Walking parallels" },
+        { time: 120, text:"Heart to heart" },
+        { time: 126, text:"To all the days we were together" },
+        { time: 133, text:"To all the time we played a part" },
+        { time: 140, text:"In each other's lives" },
+        { time: 145, text:"Heart to heart" },
+        { time: 198, text:""}
     ];
 
     const lyricsElement = document.getElementById('lyrics');
@@ -55,7 +52,18 @@ document.addEventListener('DOMContentLoaded', function() {
     audioElement.addEventListener('timeupdate', function() {
         displayLyrics(audioElement.currentTime);
     });
-
+    audioElement.addEventListener('ended', function() {
+        // Song is over, display additional text with link
+        const additionalText = document.createElement('p');
+        additionalText.id = 'additionalText';
+        const link = document.createElement('a');
+        additionalText.textContent = 'Because your patience is a gift to me, I have another surprise for you. ';
+        link.textContent = 'See the surprise';
+        link.href = 'flowers.html';
+        additionalText.appendChild(link);
+        document.body.appendChild(additionalText);
+    });
+    
     // Event listener for the play button
     const playButton = document.getElementById('playButton');
     playButton.addEventListener('click', function() {
