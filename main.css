@@ -1,7 +1,8 @@
 body{
     margin:0;
     padding:0;
-    background-color: black;}
+    background-color: black;
+    overflow: hidden;}
 
 .heart{
     position: absolute;
@@ -11,7 +12,7 @@ body{
 
 i{
     color: black;
-    font-size: 90px;
+    font-size: 150px;
     animation: beat 0.9s infinite;
     text-shadow: 0 0 5px red,
     0 0 45px red,
@@ -22,9 +23,89 @@ i{
         transform: scale(1);
     }
     20%{
-        transform: scale(1.15);
+        transform: scale(1.2);
     }
     40%{
         transform: scale(1.4);
     }
+}
+
+span{
+    position: absolute;
+    pointer-events: none;
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+    animation: fadeInOut 1s linear infinite;
+}
+
+@keyframes fadeInOut{
+    0%, 100%{
+        opacity: 0;
+    }
+    20%, 80%{
+        opacity: 1;
+    }
+}
+
+span::before{
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: url(heart.png);
+    background-size: cover;
+    animation: moveShape 1s linear infinite;
+}
+
+@keyframes moveShape{
+    0%{
+        transform: translate(0) rotate(0deg);
+    }
+    100%{
+        transform: translate(300px) rotate(360deg);
+    }
+}
+
+@font-face {
+    font-family: "Lovely";
+    src: url("Lovely.otf") format("opentype"),
+}
+
+#lyrics{
+position: absolute;
+top: calc(50% - 250px);
+left: 50%;
+transform: translateX(-50%);
+font-family: 'Lovely', Arial, sans-serif;
+text-align: center;
+color: white;
+font-size: 200%;
+filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+}
+
+#playButton{
+position: absolute;
+top: calc(50% - 350px);
+left: 50%;
+transform: translateX(-50%);
+box-sizing: border-box;
+font-family: 'Lovely', Arial, sans-serif;
+font-size: 25px;
+padding: 5px 15px;
+transition: 0.5s;
+background-color: rgb(239, 139, 156);
+border-color: rgb(239, 139, 156);
+box-shadow: 0 0 35px rgb(239, 139, 156);
+border-radius: 30px;
+}
+
+#playButton:hover{
+    letter-spacing: 0.25rem;
+    box-shadow: 0 0 35px rgb(230, 81, 106);
+    background-color: rgb(230, 81, 106);
+}
+
+#playButton.hovered {
+    letter-spacing: 0.25rem;
+    box-shadow: 0 0 35px rgb(230, 81, 106);
+    background-color: rgb(230, 81, 106);
 }
